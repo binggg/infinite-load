@@ -1,0 +1,17 @@
+{
+  "name": "@xunlei/infinite-load",
+  "version": "1.0.0",
+  "description": "The use of Intersection Observer to achieve performance infinite scrolling loading module, no scroll event.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xunleif2e/infinite-load.git"
+  },
+  "keywords": [
+    "intersectionObserver",
+    "infinite",
+    "load"
+  ],
+  "author": "shijianan",
+  "license": "MIT"
+}

@@ -7,31 +7,34 @@
 module.exports = function infiniteLoad (getData, options = {}) {
     try {
       let {
-        threshold = [0, 1], // 触发getData的阈值
-        observeDOM, // 观测对象
-        root = document.body, // 观测对象根元素
-        rootMargin = '0 0 100px 0', // 用于提前或延迟加载
+        target, // 目标对象
+        root = document.body, // 目标对象根元素
+        distance = '100px', // 用于提前或延迟加载
         direction = 'down' // 滚动方向
       } = options
-  
+      
+      let rootMargin = `0 0 ${distance} 0`
+      if (direction !== 'down') {
+        rootMargin = `${distance} 0 0 0`
+      }
       let io = new window.IntersectionObserver(entries => {
         if (entries[0].intersectionRatio <= 0) return
         getData()
       })
   
-      if (!observeDOM) {
-        observeDOM = document.createElement('div')
+      if (!target) {
+        target = document.createElement('div')
         if (direction === 'up') {
            // 在root之前插入节点
-          root.insertBefore(observeDOM)
+          root.insertBefore(target)
         } else if (direction === 'down') {
            // 在root里面插入节点
-          root.appendChild(observeDOM)
+          root.appendChild(target)
         }
       }
       // 开始观察
-      io.observe(observeDOM, {
-        threshold,
+      io.observe(target, {
+        threshold: 1,
         rootMargin,
         root
       })

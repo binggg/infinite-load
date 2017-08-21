@@ -1,6 +1,6 @@
 {
   "name": "@xunlei/infinite-load",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The use of Intersection Observer to achieve performance infinite scrolling loading module, no scroll event.",
   "main": "index.js",
   "repository": {
